@@ -15,10 +15,17 @@ describe Game do
     expect(player_class).to have_received(:new).with("Player1")
   end
 
-  it 'can return a player name' do 
+  it 'can return player1 name' do 
     game = Game.new 
     game.add_player("Player1", player_class)
     game.player_name(1)
+    expect(player).to have_received(:name)
+  end
+  it 'can return player2 name' do 
+    game = Game.new 
+    game.add_player("Player1", player_class)
+    game.add_player("Player2", player_class)
+    game.player_name(2)
     expect(player).to have_received(:name)
   end
 end
