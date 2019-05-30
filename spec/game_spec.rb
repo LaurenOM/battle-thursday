@@ -28,4 +28,19 @@ describe Game do
     game.player_name(2)
     expect(player).to have_received(:name)
   end
+  it 'can return hp of player1' do 
+    game = Game.new 
+    game.add_player("Player1", player_class)
+    game.add_player("Player2", player_class)
+    game.player_hp(1)
+    expect(player).to have_received(:hp)
+  end
+  it 'can attack player1' do 
+    game = Game.new 
+    game.add_player("Player1", player_class)
+    game.add_player("Player2", player_class)
+    game.player_attack(1)
+    expect(player).to have_received(:take_damage)
+  end
+  
 end

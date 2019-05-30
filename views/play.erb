@@ -1,5 +1,5 @@
-<%= $player1.name %>
+<%= $game.player_name(1) %>
 <br>
-<%= $player2.name %> 
-<p id="player2_HP"><%= $player2.hp %></p>
+<%= $game.player_name(2) %> 
+<p id="player2_HP"><%= $game.player_hp(2) %></p>
 <form action="/play" method="post"><button type="submit">Attack</button></form>
