@@ -20,11 +20,15 @@ class Battle < Sinatra::Base
     $game.add_player(params[:PlayerTwo])
     redirect '/play'
   end
-
+  post '/switch_turn' do 
+    $game.complete_turn
+    redirect '/play'
+  end
 
   post '/play' do 
-    $game.complete_turn
+    $game.attack_phase
     erb(:attack_message)
+    # $game.complete_turn
   end
 
   run! if app_file == $0

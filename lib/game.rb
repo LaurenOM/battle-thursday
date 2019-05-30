@@ -1,6 +1,7 @@
 require './lib/player'
 require 'pry-byebug'
 class Game
+  attr_reader :turn
   def initialize
     @players = []
     @turn = 1
@@ -26,12 +27,16 @@ class Game
   @players[index-1].take_damage
   end
 
-  def complete_turn
+  def attack_phase
     if @turn.even? 
       player_attack(1)
     else
       player_attack(2)
     end
+  end
+
+  def complete_turn
+
     @turn += 1
   end
 

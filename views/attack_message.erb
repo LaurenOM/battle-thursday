@@ -1,7 +1,11 @@
 <html>
 <body>
-'Player 1 has attacked'
-<form method="get" action="/play">
+<% if $game.turn.even? %>
+  <%= $game.turn; $game.player_name(2)%> has attacked <%= $game.player_name(1)%>
+<% else %>
+  <%= $game.player_name(1)%> has attacked <%= $game.player_name(2)%>
+<% end %>
+<form method="post" action="/switch_turn">
 <button type="submit">Go back!</button>
 </form>
 </body>

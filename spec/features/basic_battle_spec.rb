@@ -17,7 +17,15 @@ feature 'Battle' do
   scenario 'player 1 attacks player 2' do
     sign_in_and_play
     click_button 'Attack'
-    expect(page).to have_content 'Player 1 has attacked'
+    expect(page).to have_content 'Thanos has attacked Fat Thor'
+  end
+
+  scenario 'player 2 attacks player 1' do
+    sign_in_and_play
+    click_button 'Attack'
+    click_button 'Go back!'
+    click_button 'Attack'
+    expect(page).to have_content 'Fat Thor has attacked Thanos'
   end
 
   scenario 'player 1 attacks player 2; reduces player 2 HP' do 
