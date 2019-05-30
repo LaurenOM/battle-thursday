@@ -36,6 +36,8 @@ feature 'Battle' do
     sign_in_and_play
     click_button 'Attack'
     click_button 'Go back!'
+    click_button 'Attack'
+    click_button 'Go back!'
     expect(page).to have_css('#player1_HP', text: '40')
   end
 end 

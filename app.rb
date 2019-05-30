@@ -5,6 +5,8 @@ require './lib/game'
 class Battle < Sinatra::Base
   enable :sessions 
   $game = Game.new
+  $turn = 1
+
   get '/' do
     erb(:index)
   end
@@ -21,7 +23,13 @@ class Battle < Sinatra::Base
 
 
   post '/play' do 
-    $game.player_attack(2)
+    if $turn.even? 
+      $game.player_attack(1)
+    else
+      $game.player_attack(2)
+    end
+    $turn += 1
+
     erb(:attack_message)
   end
 
