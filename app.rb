@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require 'player'
+require './lib/player'
 
 class Battle < Sinatra::Base
   enable :sessions 
@@ -18,8 +18,13 @@ class Battle < Sinatra::Base
     redirect '/play'
   end
 
-  post '/play' do
-    'Player 1 has attacked'
+  # get '/attack' do 
+  #   'Player 1 has attacked'
+  # end
+
+  post '/play' do 
+    $player2.take_damage
+    erb(:attack_message)
   end
 
   run! if app_file == $0
