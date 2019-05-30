@@ -23,7 +23,7 @@ class Battle < Sinatra::Base
   # end
 
   post '/play' do 
-    $player2.take_damage
+    Game.new.attack($player2)
     erb(:attack_message)
   end
 
