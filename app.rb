@@ -23,13 +23,7 @@ class Battle < Sinatra::Base
 
 
   post '/play' do 
-    if $turn.even? 
-      $game.player_attack(1)
-    else
-      $game.player_attack(2)
-    end
-    $turn += 1
-
+    $game.complete_turn
     erb(:attack_message)
   end
 

@@ -3,6 +3,7 @@ require 'pry-byebug'
 class Game
   def initialize
     @players = []
+    @turn = 1
   end
 
   def attack(player)
@@ -23,6 +24,15 @@ class Game
   
   def player_attack(index)
   @players[index-1].take_damage
+  end
+
+  def complete_turn
+    if @turn.even? 
+      player_attack(1)
+    else
+      player_attack(2)
+    end
+    @turn += 1
   end
 
 end
